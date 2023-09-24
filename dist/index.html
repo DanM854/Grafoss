@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es" > <!--Idioma-->
+<head>
+  <meta charset="UTF-8"> <!--Formato caracteres-->
+  <title>Grafos</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script> <!--Biblioteca vis-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css"> <!--CSS pred de vis-->
+<head>
+  <!--Estilo-->
+  <style> 
+    *:not(input) {
+      color: white;
+    }
+    button {
+      background-color: #1696C9;
+    }
+*{
+  text-align: middle;
+}
+  </style>
+</head>
+  <!--Seccion de entrada de datos-->
+  <h1>Entradas</h1>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <!--seccion de vertices-->
+          <h2>Vertices</h2>
+          <table>
+            <tbody>
+                <td></td>
+                <!--Define los labels y los espacios para los inputs-->
+              <tr>
+                <td><label for="node-id">Id</label></td>
+                <td><input id="node-id" type="text" value="" /></td>
+              </tr>
+              <tr>
+                <td><label for ="node-peso">Peso</label></td> 
+                <td><input id="node-peso" type="text" value="" /></td>
+              </tr>
+              <tr>
+                <td><label for="node-label">Nombre</label></td>
+                <td><input id="node-label" type="text" value="" /></td>
+              </tr>
+              <tr>
+                <td><label for="node-level">Nivel</label></td>
+                <td><input id="node-level" type="number" value="1" min="1" /></td>
+              </tr>
+              <!--definicion de los botones-->
+                <td>Acción</td>
+                <td>
+                  <button id="node-add" onclick="addNode();">Añadir</button>
+                  <button id="node-update" onclick="updateNode();">Actualizar</button>
+                  <button id="node-remove" onclick="removeNode();">Eliminar</button>
+                  <button id="undo-button" onclick="undo();">Deshacer</button>
+                </td>
+            </tbody>
+          </table>
+        </td>
+        <td>
+          <!--seccion de aristas-->
+          <h2>Aristas</h2>
+          <table>
+            <tbody>
+              <tr>
+                <!--Defibe los labels y los espacios para los inputs-->
+                <td></td>
+                <td><label for="edge-id">Id</label></td>
+                <td><input id="edge-id" type="text" value="" /></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><label for="edge-from">Nodo inicial</label></td>
+                <td><input id="edge-from" type="text" value="" /></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><label for="edge-to">Nodo final</label></td>
+                <td><input id="edge-to" type="text" value="" /></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><label for="edge-label">Tiempo(horas)</label></td>
+                <td><input id="edge-label" type="text" value="" /></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><label for="edge-direction">Dirección</label></td>
+                <td>
+                  <select id="edge-direction">
+                    <option value="unidireccional">Unidireccional</option>
+                    <option value="bidireccional">Bidireccional</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <!--definicion de los botones-->
+                <td>Acción</td>
+                <td>
+                  <button id="edge-add" onclick="addEdge();">Añadir</button>
+                  <button id="edge-update" onclick="updateEdge();">Actualizar</button>
+                  <button id="edge-remove" onclick="removeEdge();">Eliminar</button>
+                  <button id="undo-button" onclick="undo();">Deshacer</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!--Seccion de visualizacion-->
+  <h1>Vista</h1>
+  <table class="view">
+    <!--proporciones y muestra de info-->
+    <colgroup>
+      <col width="25%" />
+      <col width="25%" />
+      <col width="50%" />
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>
+          <h2>Vertices</h2>
+          <pre id="nodes"></pre>
+        </td>
+        <td>
+          <h2>Aristas</h2>
+          <pre id="edges"></pre>
+        </td>
+        <td>
+          <h2>Grafo</h2>
+          <div id="mynetwork"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
